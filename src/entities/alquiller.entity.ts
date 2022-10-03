@@ -1,4 +1,7 @@
-import { Entity, Column, PrimaryGeneratedColumn } from 'typeorm';
+import { Entity, Column, PrimaryGeneratedColumn, OneToMany } from 'typeorm';
+import { Car } from './car.entity';
+import { Cliente } from './cliente.entity';
+import { Pago } from './pago.entity';
 
 @Entity()
 export class Alquiller {
@@ -23,5 +26,11 @@ export class Alquiller {
     @Column('int')
     devuelto: boolean;
 
+    @OneToMany(type => Car, Car => Car.id)
+    cars: Car[];
+   
+    @OneToMany(type => Pago, Pago => Pago.id)
+    pagos: Pago[];
+ 
 
 }

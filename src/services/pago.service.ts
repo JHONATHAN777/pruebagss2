@@ -14,9 +14,8 @@ export class PagoService {
 
         return [{
             id: 1,
-            fecha: 41,
+            fecha: "25/07/1995",
             valor: 2,
-            
         }]
     }
 }

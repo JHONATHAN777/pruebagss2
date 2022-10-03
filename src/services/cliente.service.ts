@@ -1,24 +1,18 @@
 import { Injectable, Inject } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
+import { Alquiller } from 'src/entities/alquiller.entity';
 import { Repository, } from 'typeorm';
 import { Cliente } from '../entities/cliente.entity';
 
 @Injectable()
 export class ClienteService {
     constructor(
-     
+     @InjectRepository(Cliente)
+     private clienteRepository: Repository<Cliente>,
     ) { }
 
-    async findAll(): Promise<Cliente[]> {
-        
-
-        return [{
-            id: 1,
-            cedula: 1026584007,
-            nombre: "juan",
-            numero1: 3015962798,
-            numero2: 3214562538,
-            
-        }]
+    async createCliente(cliente : Cliente){   
+     this.clienteRepository.create(cliente)
+     return true;
     }
 }
